@@ -12,7 +12,8 @@ from cockpitdecks.deck import DeckWithIcons
 from cockpitdecks.page import Page
 from cockpitdecks.button import Button, DECK_BUTTON_DEFINITION
 from cockpitdecks.event import PushEvent, EncoderEvent, SwipeEvent
-from cockpitdecks.buttons.representation import Representation, IconBase, ColoredLED
+from cockpitdecks.buttons.representation import Representation, IconBase
+from cockpitdecks_ld.buttons.representation import ColoredLED
 
 logger = logging.getLogger(__name__)
 # logger.setLevel(logging.DEBUG)
