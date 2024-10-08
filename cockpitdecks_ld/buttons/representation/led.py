@@ -22,6 +22,7 @@ class ColoredLED(Representation):
         self._color = button._config.get(DECK_FEEDBACK.COLORED_LED.value, button.get_attribute("cockpit-color"))
         self.color = (128, 128, 256)
         Representation.__init__(self, button=button)
+        self.off_color = self.get_attribute("off-color", default=(0, 0, 0))
 
     def init(self):
         if type(self._color) is dict:  # @todo: does not currently work
@@ -55,7 +56,8 @@ class ColoredLED(Representation):
         color_rgb = colorsys.hsv_to_rgb((int(hue) % 360) / 360, 1, 1)
         self.color = tuple([int(255 * i) for i in color_rgb])  # type: ignore
         logger.debug(f"{color_str}, {hue}, {[(int(hue) % 360)/360,1,1]}, {color_rgb}, {self.color}")
-        return self.color
+
+        return self.off_color if self.button.value == 0 else self.number_color
 
     def render(self):
         color = self.get_color()
@@ -64,8 +66,10 @@ class ColoredLED(Representation):
 
     def clean(self):
         logger.debug(f"{type(self).__name__}")
-        self.button.value = 0
+        old_value = self.button.value
+        self.button.value = 0 # switch it off for the clean display
         self.button.render()
+        self.button.value = old_value
 
     def describe(self) -> str:
         """

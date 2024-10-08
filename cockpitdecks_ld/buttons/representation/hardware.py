@@ -48,22 +48,23 @@ class VirtualLLColoredButton(HardwareRepresentation):
         )
         # marker
         self.number_color = self.button._representation.render()
-        color = self.off_color if self.button.value == 0 else self.number_color
         if self.number == 0:  # special marker for 0
             size = int(self.radius * 0.9)
             draw.ellipse(
                 [self.radius - int(size / 2), self.radius - int(size / 2)] + [self.radius + int(size / 2), self.radius + int(size / 2)],
-                outline=color,
+                outline=self.number_color,
                 width=2,
             )
             size = 4
-            draw.ellipse([self.radius - int(size / 2), self.radius - int(size / 2)] + [self.radius + int(size / 2), self.radius + int(size / 2)], fill=color)
+            draw.ellipse([self.radius - int(size / 2), self.radius - int(size / 2)] + [self.radius + int(size / 2), self.radius + int(size / 2)],
+                fill=self.number_color
+            )
         else:
             font = self.get_font(self.get_attribute("font"), int(self.radius))  # (standard font)
             draw.text(
                 (self.radius, self.radius),
                 text=str(self.number),
-                fill=color,
+                fill=self.number_color,
                 font=font,
                 anchor="mm",
                 align="center",
