@@ -1,6 +1,7 @@
 """
 Representation for ColoredLED.
 """
+
 import logging
 import colorsys
 

@@ -1,6 +1,7 @@
 """
 Special represenations for web decks, to draw a "hardware" button
 """
+
 import logging
 
 from PIL import Image, ImageDraw
