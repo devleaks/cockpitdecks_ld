@@ -67,7 +67,7 @@ class ColoredLED(Representation):
     def clean(self):
         logger.debug(f"{type(self).__name__}")
         old_value = self.button.value
-        self.button.value = 0 # switch it off for the clean display
+        self.button.value = 0  # switch it off for the clean display
         self.button.render()
         self.button.value = old_value
 

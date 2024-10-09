@@ -56,8 +56,8 @@ class VirtualLLColoredButton(HardwareRepresentation):
                 width=2,
             )
             size = 4
-            draw.ellipse([self.radius - int(size / 2), self.radius - int(size / 2)] + [self.radius + int(size / 2), self.radius + int(size / 2)],
-                fill=self.number_color
+            draw.ellipse(
+                [self.radius - int(size / 2), self.radius - int(size / 2)] + [self.radius + int(size / 2), self.radius + int(size / 2)], fill=self.number_color
             )
         else:
             font = self.get_font(self.get_attribute("font"), int(self.radius))  # (standard font)
