@@ -156,9 +156,9 @@ class Loupedeck(DeckWithIcons):
         # Map between Loupedeck indices and Cockpitdecks'
         if action == CALLBACK_KEYWORD.PUSH.value:
             num = -1
+            if key == KW_CIRCLE:  # this is a keywork in Loupedeck driver: button zero is named "circle", other buttons 1 to 7.
+                key = 0
             if not self.deck_type.is_encoder(index=key):
-                if key == KW_CIRCLE:
-                    key = 0
                 try:
                     num = int(key)
                     bdef = self.deck_type.filter({DECK_KW.FEEDBACK.value: "colored-led"})
