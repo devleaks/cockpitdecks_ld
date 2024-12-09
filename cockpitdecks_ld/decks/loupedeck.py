@@ -454,9 +454,10 @@ class Loupedeck(DeckWithIcons):
         self.device.start()  # restart it if it was terminated
         logger.info(f"loupedeck {self.name}: listening for key strokes")
 
-    def terminate(self):
+    def terminate(self, disconnected: bool = False):
         super().terminate()  # cleanly unload current page, if any
-        Loupedeck.terminate_device(self.device, self.name)
+        if not disconnected:
+            Loupedeck.terminate_device(self.device, self.name)
         self.running = False
         # logger.debug(f"closing {type(self.device).__name__}..")
         # del self.device    # closes connection and stop serial _read thread
