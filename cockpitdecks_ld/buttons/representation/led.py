@@ -41,7 +41,8 @@ class ColoredLED(Representation):
             base = self._config
         color_str = base.get("color")
         if color_str is None:
-            return self.color
+            return self.off_color if self.button.value == 0 else self.color
+
         # Formula in text
         KW_FORMULA_STR = f"${{{CONFIG_KW.FORMULA.value}}}"  # "${formula}"
         hue = 0  # red
