@@ -48,6 +48,8 @@ class VirtualLLColoredButton(HardwareRepresentation):
         )
         # marker
         self.number_color = self.button._representation.render()
+        if self.button.value == 0:
+            self.number_color = self.off_color
         if self.number == 0:  # special marker for 0
             size = int(self.radius * 0.9)
             draw.ellipse(
