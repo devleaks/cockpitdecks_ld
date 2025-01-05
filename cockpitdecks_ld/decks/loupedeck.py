@@ -452,7 +452,7 @@ class Loupedeck(DeckWithIcons):
             return
         self.device.set_callback(self.key_change_callback)
         self.device.start()  # restart it if it was terminated
-        logger.info(f"loupedeck {self.name}: listening for key strokes")
+        logger.info(f"deck {self.name} started")
 
     def terminate(self, disconnected: bool = False):
         super().terminate()  # cleanly unload current page, if any
