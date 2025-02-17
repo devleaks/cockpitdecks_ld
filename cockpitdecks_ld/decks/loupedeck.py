@@ -10,7 +10,7 @@ from Loupedeck import DeviceManager
 from cockpitdecks import RESOURCES_FOLDER, DEFAULT_PAGE_NAME, DECK_KW, DECK_FEEDBACK
 from cockpitdecks.deck import DeckWithIcons
 from cockpitdecks.page import Page
-from cockpitdecks.button import Button, DECK_BUTTON_DEFINITION
+from cockpitdecks.button import Button
 from cockpitdecks.event import PushEvent, EncoderEvent, SwipeEvent
 from cockpitdecks.buttons.representation import Representation, IconBase
 from cockpitdecks_ld.buttons.representation import ColoredLED
@@ -112,7 +112,6 @@ class Loupedeck(DeckWithIcons):
         button0 = Button(
             config={
                 "index": "0",
-                DECK_BUTTON_DEFINITION: self.deck_type.get_button_definition("0"),
                 "name": "X-Plane Map (default page)",
                 "type": "push",
                 "command": "sim/map/show_current",
