@@ -58,13 +58,13 @@ class IconSide(Icon):  # modified Representation IconSide class
     #             for label in self.labels:
     #                 dref = label.get(CONFIG_KW.MANAGED.value)
     #                 if dref is not None:
-    #                     logger.debug(f"button {self.button_name()}: added label dataref {dref}")
+    #                     logger.debug(f"button {self.button_name}: added label dataref {dref}")
     #                     self.datarefs.append(dref)
     #     return self.datarefs
 
     def is_valid(self):
         if self.button.index not in ["left", "right"]:
-            logger.debug(f"button {self.button_name()}: {type(self).__name__}: not a valid index {self.button.index}")
+            logger.debug(f"button {self.button_name}: {type(self).__name__}: not a valid index {self.button.index}")
             return False
         return super().is_valid()
 

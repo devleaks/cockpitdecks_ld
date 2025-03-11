@@ -28,7 +28,7 @@ class ColoredLED(Representation):
         if type(self._color) is dict:  # @todo: does not currently work
             self.datarefs = self.button.scan_datarefs(self._color)
             if self.datarefs is not None and len(self.datarefs) > 0:
-                logger.debug(f"button {self.button_name()}: adding datarefs {self.datarefs} for color")
+                logger.debug(f"button {self.button_name}: adding datarefs {self.datarefs} for color")
         else:
             self.color = convert_color(self._color)
 
@@ -52,7 +52,7 @@ class ColoredLED(Representation):
                 hue = self.button.execute_formula(formula=formula)
         else:
             hue = int(color_str)
-            logger.warning(f"button {self.button_name()}: color contains {KW_FORMULA_STR} but no {CONFIG_KW.FORMULA.value} attribute found")
+            logger.warning(f"button {self.button_name}: color contains {KW_FORMULA_STR} but no {CONFIG_KW.FORMULA.value} attribute found")
 
         color_rgb = colorsys.hsv_to_rgb((int(hue) % 360) / 360, 1, 1)
         self.color = tuple([int(255 * i) for i in color_rgb])  # type: ignore
