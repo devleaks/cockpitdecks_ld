@@ -6,7 +6,6 @@ import logging
 
 from PIL import Image, ImageDraw
 
-from cockpitdecks.resources.color import TRANSPARENT_PNG_COLOR
 from cockpitdecks.buttons.representation.hardware import HardwareRepresentation, NO_ICON
 
 logger = logging.getLogger(__name__)
@@ -37,7 +36,7 @@ class VirtualLLColoredButton(HardwareRepresentation):
         self.number_color = self.button._representation.render()
 
     def get_image(self):
-        image = Image.new(mode="RGBA", size=(2 * self.radius, 2 * self.radius), color=TRANSPARENT_PNG_COLOR)
+        image = Image.new(mode="RGBA", size=(2 * self.radius, 2 * self.radius), color=self.TRANSPARENT_PNG_COLOR)
         draw = ImageDraw.Draw(image)
         # knob
         draw.ellipse(
